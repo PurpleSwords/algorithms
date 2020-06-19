@@ -94,6 +94,7 @@ public class QuickFind {
 	/**
 	 * 输入第一行表示最大数+1
 	 * 后续每一行由两个数字组成，不在一个集合则合并并输出，否则输出True
+	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {
