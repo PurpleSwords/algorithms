@@ -1,5 +1,5 @@
 https://www.coursera.org/learn/algorithms-part1/
-## 15UnionFind 联合查找（并查集）
+## 15 UnionFind 联合查找（并查集）
 ### 应用
 - 网络中：动态连通性
 - 图处理：Kruskal最小生成树算法
@@ -51,10 +51,25 @@ https://www.coursera.org/learn/algorithms-part1/
 ### 补充
 - DualPivotQuicksort执行流程
 ![](img/14DualPivotQuicksort.png)
-## 13 Stacks And Queues
+## 13 StacksAndQueuesAndBags And Queues And Bags
+### 应用
+#### 栈
+- 递归
+  - 总能显式的使用栈将递归程序非递归化
+- 栈式编程语言
+- Dijkstra双栈算术表达式求值算法
+  - 双栈：数值栈和操作符栈
 ### Stack
 - 使用静态嵌套类的链表构成的栈
 ### ResizingArrayStack
 - 使用可调整大小的数组构成的栈
+### Queue
+- 使用静态嵌套类的链表构成的队列
+### ResizingArrayQueue
+- 使用可调整大小的数组构成的队列
 ### 测试数据
 - tobe.txt
+### 补充
+#### 栈
+- 想要保证每个操作都能很快完成，选用链表（数组分配时会消耗大量时间，变的很慢）
+- 只关心总时间选用数组（将调整数组大小的开销平摊，仍比链表开销要小）

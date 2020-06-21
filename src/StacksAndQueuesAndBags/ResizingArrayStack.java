@@ -1,4 +1,4 @@
-package Stacks;
+package StacksAndQueuesAndBags;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
@@ -23,7 +23,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 	private int n;
 
 	public ResizingArrayStack() {
-		//初始化大小为2
+		//初始化大小为2，创建Object数组，然后强制转换成泛型
 		a = (Item[]) new Object[2];
 		n = 0;
 	}
@@ -55,7 +55,7 @@ public class ResizingArrayStack<Item> implements Iterable<Item> {
 
 	public void push(Item item) {
 		if (n == a.length) {
-			resize(2 * a.length);
+			resize(2 * n);
 		}
 		//先存放再移动指针
 		a[n++] = item;

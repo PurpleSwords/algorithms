@@ -1,4 +1,4 @@
-package Stacks;
+package StacksAndQueuesAndBags;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
@@ -10,13 +10,13 @@ import java.util.NoSuchElementException;
  * Created with IntelliJ IDEA.
  *
  * @Author PurpleSword
- * @Date 2020/6/21 10:28
+ * @Date 2020/6/21 22:44
  * @Version 1.0
  * @Description
  */
-public class Stack<Item> implements Iterable<Item> {
-	//栈的初始节点以及栈中元素数量
+public class Queue<Item> implements Iterable<Item> {
 	private Node<Item> first;
+	private Node<Item> last;
 	private int n;
 
 	private static class Node<Item> {
@@ -24,8 +24,9 @@ public class Stack<Item> implements Iterable<Item> {
 		private Node<Item> next;
 	}
 
-	public Stack() {
+	public Queue() {
 		first = null;
+		last = null;
 		n = 0;
 	}
 
@@ -37,27 +38,37 @@ public class Stack<Item> implements Iterable<Item> {
 		return n;
 	}
 
-	public void push(Item item) {
-		Node<Item> oldFirst = first;
-		first = new Node<Item>();
-		first.item = item;
-		first.next = oldFirst;
+	public void enqueue(Item item) {
+		Node<Item> oldLast = last;
+		last = new Node<Item>();
+		last.item = item;
+		last.next = null;
+		// 入队前为空的特殊处理
+		if (isEmpty()) {
+			first = last;
+		} else {
+			oldLast.next = last;
+		}
 		++n;
 	}
 
-	public Item pop() {
+	public Item dequeue() {
 		if (isEmpty()) {
-			throw new NoSuchElementException("Stack underflow");
+			throw new NoSuchElementException("Queue underflow");
 		}
 		Item item = first.item;
 		first = first.next;
 		--n;
+		// 出队后为空的特殊处理
+		if (isEmpty()) {
+			last = null;
+		}
 		return item;
 	}
 
 	public Item peek() {
 		if (isEmpty()) {
-			throw new NoSuchElementException("Stack underflow");
+			throw new NoSuchElementException("Queue underflow");
 		}
 		return first.item;
 	}
@@ -74,7 +85,6 @@ public class Stack<Item> implements Iterable<Item> {
 
 	@Override
 	public Iterator<Item> iterator() {
-		//返回一个迭代器
 		return new LinkedIterator(first);
 	}
 
@@ -87,36 +97,35 @@ public class Stack<Item> implements Iterable<Item> {
 
 		@Override
 		public boolean hasNext() {
-			return current == null;
+			return current != null;
+		}
+
+		@Override
+		public Item next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			Item item = current.item;
+			current = current.next;
+			return item;
 		}
 
 		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
-
-		@Override
-		public Item next() {
-			if (!hasNext()) {
-				throw new UnsupportedOperationException();
-			}
-			Item item = current.item;
-			current = current.next;
-			return item;
-		}
 	}
 
 	public static void main(String[] args) {
-		Stack<String> stack = new Stack<String>();
+		Queue<String> queue = new Queue<String>();
 		while (!StdIn.isEmpty()) {
 			String item = StdIn.readString();
-			//输入 - 表示弹出，按序输出弹出列表
 			if (!item.equals("-")) {
-				stack.push(item);
-			} else if (!stack.isEmpty()) {
-				StdOut.print(stack.pop() + " ");
+				queue.enqueue(item);
+			} else if (!queue.isEmpty()) {
+				StdOut.print(queue.dequeue() + " ");
 			}
 		}
-		StdOut.println("(" + stack.size() + " left on stack)");
+		StdOut.println("(" + queue.size() + " left on queue)");
 	}
 }
