@@ -67,6 +67,12 @@ https://www.coursera.org/learn/algorithms-part1/
 - 使用静态嵌套类的链表构成的队列
 ### ResizingArrayQueue
 - 使用可调整大小的数组构成的队列
+### Bag （多集：可包含重复元素）
+- 使用静态嵌套类的链表构成的多集
+- 没有删除功能
+### ResizingArrayBag
+- 使用可调整大小的数组构成的多集
+- 没有删除功能
 ### 测试数据
 - tobe.txt
 ### 补充
