@@ -90,6 +90,14 @@ https://www.coursera.org/learn/algorithms-part1/
 - 不适合对大型数据进行排序
 - 时间复杂度O(n²)（平均情况比选择排序要快）
 - 空间复杂度Θ(1)
+### Shell 哈希排序
+- 不稳定
+- 插入排序的改进
+- 增量序列为3n+1
+- 时间复杂度Θ(n^1.5)
+- 空间复杂度Θ(1)
+### 应用
+#### GrahamScan 凸包问题(占坑)
 ### 测试数据
 - tiny.txt
 - words3.txt
